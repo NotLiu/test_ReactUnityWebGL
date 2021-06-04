@@ -28,13 +28,13 @@ yarn-error.log*
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
+/testGame/[Ll]ibrary/
+/testGame/[Tt]emp/
+/testGame/[Oo]bj/
+/testGame/[Bb]uild/
+/testGame/[Bb]uilds/
+/testGame/[Ll]ogs/
+/testGame/[Mm]emoryCaptures/
  
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

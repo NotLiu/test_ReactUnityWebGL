@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Unity, { UnityContext } from "react-unity-webgl";
+
+const unityContext = new UnityContext({
+  loaderUrl: "build/public.loader.js",
+  dataUrl: "build/public.data",
+  frameworkUrl: "build/public.framework.js",
+  codeUrl: "build/public.wasm",
+});
 
 function App() {
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [score, setScore] = useState(0);
+
+  useEffect(function () {
+    unityContext.on("GameOver", function (userName, score) {
+      setIsGameOver(true);
+      setUserName(userName);
+      setScore(score);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isGameOver === true && <p>{`Game Over! ${userName} ${score} points`}</p>}
+      <Unity unityContext={unityContext} />
     </div>
   );
 }
